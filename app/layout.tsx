@@ -4,15 +4,15 @@ import "./globals.css";
 import { Nunito } from "next/font/google";
 import Navbar from "./component/navbar/Navbar";
 import ClientOnly from "./component/ClientOnly";
-import Modal from "./component/modals/modal";
+import RegisterModal from "./component/modals/RegisterModal";
 
 const font = Nunito({
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Airbnbp",
-  description: "Airbnb clone", 
+  description: "Airbnb clone",
 };
 
 export default function RootLayout({
@@ -24,10 +24,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
-          <Modal title="Hello world" isOpen />
           <Navbar />
+          <RegisterModal />
         </ClientOnly>
-
         {children}
       </body>
     </html>
