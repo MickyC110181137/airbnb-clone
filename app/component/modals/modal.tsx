@@ -39,7 +39,7 @@ const Modal: React.FC<ModalProps> = ({
       console.log("關閉被禁用");
       return;
     }
-    console.log("1️⃣ 開始關閉動畫");
+    console.log("1️開始關閉動畫");
     setShowModal(false);
     setTimeout(() => {
       console.log("close");
