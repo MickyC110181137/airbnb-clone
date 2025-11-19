@@ -8,8 +8,18 @@ export default async function getListings() {
       },
     });
 
-    return listings;
+    const safeListings = listings.map((listing) => ({
+      ...listing,
+      createdAt: listing.createdAt.toISOString(),
+    }));
+    return safeListings;
   } catch (error: unknown) {
-    throw new Error(error instanceof Error ? error.message : "Database Error");
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error("Unknown error");
   }
+  // catch (error: any) {
+  //     throw new Error(String(error));
+  // }
 }
