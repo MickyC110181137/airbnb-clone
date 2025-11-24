@@ -11,7 +11,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Reservation } from "../../generated/prisma";
 
 import { categories } from "../../component/navbar/Categories";
-import { safeListings, safeReservations, SafeUser } from "../../types";
+import { safeListings, SafeReservations, SafeUser } from "../../types";
 import Container from "../../component/Container";
 import ListingHead from "../../component/listings/ListingHead";
 import ListingInfo from "../../component/listings/ListingInfo";
@@ -27,7 +27,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-  reservations?: safeReservations[];
+  reservations?: SafeReservations[];
   listing: safeListings & {
     user: SafeUser;
   };
@@ -78,7 +78,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         toast.success("Listing reserved!");
         setDateRange(initialDateRange);
         //Redirect to /trips
-        router.refresh();
+        router.push("/trips");
       })
       .catch(() => {
         toast.error("Someghing went wrong");

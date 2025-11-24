@@ -1,13 +1,16 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import { useCallback, useState } from "react";
+import { signOut } from "next-auth/react";
+
 import MenuItem from "./MenuItem";
+
 import useRegisterModal from "../../hooks/useRegisterModal";
 import useLoginModal from "../../hooks/useLoginModal";
 import { User } from "../../generated/prisma/client";
-import { signOut } from "next-auth/react";
 import { SafeUser } from "../../types";
 import useRentModal from "../../hooks/useRentModal";
 
@@ -16,6 +19,7 @@ interface UserMenuProps {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
+  const router = useRouter();
   const rentModal = useRentModal();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
@@ -98,7 +102,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem
+                  onClick={() => router.push("/trips")}
+                  label="My trips"
+                />
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
