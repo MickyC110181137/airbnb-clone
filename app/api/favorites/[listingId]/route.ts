@@ -14,13 +14,13 @@ export async function POST(request: Request, { params }: { params: IParams }) {
     return NextResponse.error();
   }
 
-  // const { listingId } = params;
+  const { listingId } = params;
 
   // if (!listingId || typeof listingId !== "string") {
   //   throw new Error("Invalid ID");
   // }
-  const resolvedParams = await params; // <- 必須 await
-  const listingId = resolvedParams.listingId;
+  // const resolvedParams = await params; // <- 必須 await
+  // const listingId = resolvedParams.listingId;
 
   if (!listingId) return NextResponse.error();
   // 'favoriteIds' is never reassigned. Use 'const' instead.

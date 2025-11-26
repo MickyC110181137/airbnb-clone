@@ -16,8 +16,10 @@ export async function DELETE(
     return NextResponse.error();
   }
 
-  const resolvedParams = await params; // <- 必須 await
-  const reservationId = resolvedParams.reservationId;
+  const { reservationId } = params;
+
+  // const resolvedParams = await params; // <- 必須 await
+  // const reservationId = resolvedParams.reservationId;
 
   if (!reservationId || typeof reservationId !== "string") {
     throw new Error("Invalid ID");
