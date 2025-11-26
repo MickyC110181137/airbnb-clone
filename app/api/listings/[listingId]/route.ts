@@ -2,13 +2,13 @@ import { NextResponse } from "next/server";
 import prisma from "../../../libs/prismadb";
 import getCurrentUser from "../../../actions/getCurrentUser";
 
-interface Iparams {
-  listingId?: string;
-}
+// interface Iparams {
+//   listingId?: string;
+// }
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Iparams },
+  { params }: { params: Promise<{ listingId: string }> },
 ) {
   const currentUser = await getCurrentUser();
 
@@ -16,7 +16,7 @@ export async function DELETE(
     return NextResponse.error();
   }
 
-  const { listingId } = params;
+  const { listingId } = await params;
 
   // const resolvedParams = await params; // <- 必須 await
   // const listingId = resolvedParams.listingId;
