@@ -1,22 +1,35 @@
 import { NextResponse } from "next/server";
+
 import getCurrentUser from "../../../actions/getCurrentUser";
 import prisma from "../../../libs/prismadb";
 
-export async function POST(
-  request: Request,
-  context: { params: { listingId: string } },
-) {
+interface IParams {
+  listingId?: string;
+}
+
+export async function POST(request: Request, { params }: { params: IParams }) {
   const currentUser = await getCurrentUser();
-  if (!currentUser) return NextResponse.error();
 
-  const { listingId } = context.params;
+  if (!currentUser) {
+    return NextResponse.error();
+  }
+
+  const { listingId } = params;
   if (!listingId) return NextResponse.error();
+  // 'favoriteIds' is never reassigned. Use 'const' instead.
+  // let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-  const favoriteIds = [...(currentUser.favoriteIds || []), listingId];
+  const favoriteIds = [...(currentUser.favoriteIds || [])];
+
+  favoriteIds.push(listingId);
 
   const user = await prisma.user.update({
-    where: { id: currentUser.id },
-    data: { favoriteIds },
+    where: {
+      id: currentUser.id,
+    },
+    data: {
+      favoriteIds,
+    },
   });
 
   return NextResponse.json(user);
@@ -24,21 +37,31 @@ export async function POST(
 
 export async function DELETE(
   request: Request,
-  context: { params: { listingId: string } },
+  { params }: { params: IParams }, // 直接指定 string
 ) {
   const currentUser = await getCurrentUser();
-  if (!currentUser) return NextResponse.error();
 
-  const { listingId } = context.params;
+  if (!currentUser) {
+    return NextResponse.error();
+  }
+
+  //https://nextjs.org/docs/messages/sync-dynamic-apis
+
+  const { listingId } = params;
+
   if (!listingId) return NextResponse.error();
 
-  const favoriteIds = (currentUser.favoriteIds || []).filter(
-    (id) => id !== listingId,
-  );
+  let favoriteIds = [...(currentUser.favoriteIds || [])];
+
+  favoriteIds = favoriteIds.filter((id) => id !== listingId);
 
   const user = await prisma.user.update({
-    where: { id: currentUser.id },
-    data: { favoriteIds },
+    where: {
+      id: currentUser.id,
+    },
+    data: {
+      favoriteIds,
+    },
   });
 
   return NextResponse.json(user);
