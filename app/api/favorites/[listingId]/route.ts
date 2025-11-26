@@ -1,42 +1,22 @@
 import { NextResponse } from "next/server";
-
 import getCurrentUser from "../../../actions/getCurrentUser";
 import prisma from "../../../libs/prismadb";
 
-interface IParams {
-  listingId?: string;
-}
-
-export async function POST(request: Request, { params }: { params: IParams }) {
+export async function POST(
+  request: Request,
+  context: { params: { listingId: string } },
+) {
   const currentUser = await getCurrentUser();
+  if (!currentUser) return NextResponse.error();
 
-  if (!currentUser) {
-    return NextResponse.error();
-  }
-
-  // const { listingId } = params;
-
-  // if (!listingId || typeof listingId !== "string") {
-  //   throw new Error("Invalid ID");
-  // }
-  const resolvedParams = await params; // <- 必須 await
-  const listingId = resolvedParams.listingId;
-
+  const { listingId } = context.params;
   if (!listingId) return NextResponse.error();
-  // 'favoriteIds' is never reassigned. Use 'const' instead.
-  // let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-  const favoriteIds = [...(currentUser.favoriteIds || [])];
-
-  favoriteIds.push(listingId);
+  const favoriteIds = [...(currentUser.favoriteIds || []), listingId];
 
   const user = await prisma.user.update({
-    where: {
-      id: currentUser.id,
-    },
-    data: {
-      favoriteIds,
-    },
+    where: { id: currentUser.id },
+    data: { favoriteIds },
   });
 
   return NextResponse.json(user);
@@ -44,37 +24,21 @@ export async function POST(request: Request, { params }: { params: IParams }) {
 
 export async function DELETE(
   request: Request,
-  { params }: { params: IParams }, // 直接指定 string
+  context: { params: { listingId: string } },
 ) {
   const currentUser = await getCurrentUser();
+  if (!currentUser) return NextResponse.error();
 
-  if (!currentUser) {
-    return NextResponse.error();
-  }
-
-  //https://nextjs.org/docs/messages/sync-dynamic-apis
-
-  // const { listingId } = params;
-
-  // if (!listingId || typeof listingId !== "string") {
-  //   throw new Error("Invalid ID");
-  // }
-  const resolvedParams = await params; // <- 必須 await
-  const listingId = resolvedParams.listingId;
-
+  const { listingId } = context.params;
   if (!listingId) return NextResponse.error();
 
-  let favoriteIds = [...(currentUser.favoriteIds || [])];
-
-  favoriteIds = favoriteIds.filter((id) => id !== listingId);
+  const favoriteIds = (currentUser.favoriteIds || []).filter(
+    (id) => id !== listingId,
+  );
 
   const user = await prisma.user.update({
-    where: {
-      id: currentUser.id,
-    },
-    data: {
-      favoriteIds,
-    },
+    where: { id: currentUser.id },
+    data: { favoriteIds },
   });
 
   return NextResponse.json(user);
