@@ -7,16 +7,17 @@ import EmptyState from "../../component/EmptyState";
 import ListingClient from "./ListingClient";
 import getReservations from "../../actions/getReservation";
 
-interface Params {
-  listingId?: string;
+// 注意：params 是 Promise
+interface PageProps {
+  params: Promise<{
+    listingId?: string;
+  }>;
 }
 
-interface PageProps {
-  params: Params;
-}
 const page = async ({ params }: PageProps) => {
-  const listing = await getListingById(params);
-  const reservations = await getReservations(params);
+  const listingId = await params;
+  const listing = await getListingById(listingId);
+  const reservations = await getReservations(listingId);
   const currentUser = await getCurrentUser();
 
   if (!listing) {

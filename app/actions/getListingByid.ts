@@ -8,6 +8,11 @@ export default async function getListingById(params: IParams) {
   try {
     const { listingId } = params;
 
+    // 如果 listingId 不存在，直接回傳 null
+    if (!listingId) {
+      return null;
+    }
+
     const listing = await prisma.listing.findUnique({
       where: {
         id: listingId,
