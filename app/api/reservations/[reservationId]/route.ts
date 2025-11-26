@@ -6,20 +6,21 @@ interface Iparams {
   reservationId?: string;
 }
 
-export async function DELETE(req: Request, { params }: { params: Iparams }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: Iparams },
+) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
     return NextResponse.error();
   }
 
-  const reservationId = params?.reservationId;
+  const resolvedParams = await params; // <- 必須 await
+  const reservationId = resolvedParams.reservationId;
 
   if (!reservationId || typeof reservationId !== "string") {
-    return NextResponse.json(
-      { error: "Invalid reservation ID" },
-      { status: 400 },
-    );
+    throw new Error("Invalid ID");
   }
 
   const reservation = await prisma.reservation.deleteMany({
