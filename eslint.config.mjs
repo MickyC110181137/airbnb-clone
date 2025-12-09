@@ -35,7 +35,7 @@ const eslintConfig = [
       "no-console": "warn",
       semi: ["error", "always"],
       quotes: ["error", "double"],
-      "prettier/prettier": "error",
+      "prettier/prettier": ["error", { semi: true }],
     },
   },
 ];
