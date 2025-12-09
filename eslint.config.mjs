@@ -16,26 +16,14 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    files: ["**/*.ts", "**/*.tsx"],
-
-    languageOptions: {
-      parser: tsparser,
-      sourceType: "module",
-    },
-
-    plugins: {
-      "@typescript-eslint": tseslint,
-      prettier: prettierPlugin,
-    },
-
+    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
+    plugins: [],
     rules: {
-      ...tseslint.configs.recommended.rules,
-      ...prettierConfig.rules,
-      "@typescript-eslint/no-unused-vars": "warn",
-      "no-console": "warn",
+      // 可根據需要加自訂規則
       semi: ["error", "always"],
       quotes: ["error", "double"],
-      "prettier/prettier": ["error", { semi: true }],
+      "@typescript-eslint/no-unused-vars": "warn",
+      "no-console": "warn",
     },
   },
 ];
