@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 interface CategoryInputProps {
   icon: IconType;
@@ -7,8 +7,8 @@ interface CategoryInputProps {
   onClick: (value: string) => void;
 }
 
-import React from "react";
-import { IconType } from "react-icons";
+import React from 'react';
+import { IconType } from 'react-icons';
 
 const CategoryInput: React.FC<CategoryInputProps> = ({
   icon: Icon,
@@ -29,7 +29,7 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
         hover:border-black
         transition
         cursor-pointer
-        ${selected ? "border-black" : "border-neutral-200"}
+        ${selected ? 'border-black' : 'border-neutral-200'}
     `}
     >
       <Icon size={30} />

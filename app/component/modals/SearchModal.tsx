@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { formatISO } from "date-fns";
-import qs from "query-string";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
-import { Range } from "react-date-range";
+import { formatISO } from 'date-fns';
+import qs from 'query-string';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useCallback, useMemo, useState } from 'react';
+import { Range } from 'react-date-range';
 
-import Modal from "./modal";
-import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
+import Modal from './modal';
+import CountrySelect, { CountrySelectValue } from '../inputs/CountrySelect';
 
-import useSearchModal from "../../hooks/useSearchModal";
-import dynamic from "next/dynamic";
-import Heading from "../Heading";
-import Calendar from "../inputs/Calendar";
-import Counter from "../inputs/Counter";
+import useSearchModal from '../../hooks/useSearchModal';
+import dynamic from 'next/dynamic';
+import Heading from '../Heading';
+import Calendar from '../inputs/Calendar';
+import Counter from '../inputs/Counter';
 
 interface SearchQuery {
   locationValue?: string;
@@ -44,15 +44,15 @@ const SeachModal = () => {
   const [dateRange, setDateRange] = useState<Range>({
     startDate: new Date(),
     endDate: new Date(),
-    key: "selection",
+    key: 'selection',
   });
 
   const Map = useMemo(
     () =>
-      dynamic(() => import("../Map"), {
+      dynamic(() => import('../Map'), {
         ssr: false,
       }),
-    [location],
+    [location]
   );
 
   const onBack = useCallback(() => {
@@ -91,10 +91,10 @@ const SeachModal = () => {
 
     const url = qs.stringifyUrl(
       {
-        url: "/",
+        url: '/',
         query: updateQuery,
       },
-      { skipNull: true },
+      { skipNull: true }
     );
 
     setStep(STEPS.LOCATION);
@@ -116,18 +116,18 @@ const SeachModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step == STEPS.INFO) {
-      return "Search";
+      return 'Search';
     }
 
-    return "Next";
+    return 'Next';
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
     if (step == STEPS.LOCATION) {
-      return "undefined";
+      return 'undefined';
     }
 
-    return "Back";
+    return 'Back';
   }, [step]);
 
   let bodyContent = (

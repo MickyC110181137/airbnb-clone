@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useCallback } from "react";
-import { CldUploadWidget } from "next-cloudinary";
-import Image from "next/image";
-import { TbPhotoPlus } from "react-icons/tb";
-import type { CloudinaryUploadWidgetResults } from "next-cloudinary";
+import React, { useCallback } from 'react';
+import { CldUploadWidget } from 'next-cloudinary';
+import Image from 'next/image';
+import { TbPhotoPlus } from 'react-icons/tb';
+import type { CloudinaryUploadWidgetResults } from 'next-cloudinary';
 
 interface ImageUploadProps {
   onChange: (value: string) => void;
@@ -16,11 +16,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
     (result: CloudinaryUploadWidgetResults) => {
       const info = result.info;
 
-      if (typeof info === "object" && info?.secure_url) {
+      if (typeof info === 'object' && info?.secure_url) {
         onChange(info.secure_url);
       }
     },
-    [onChange],
+    [onChange]
   );
 
   return (
@@ -42,7 +42,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
               <Image
                 alt="Upload"
                 fill
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: 'cover' }}
                 src={value}
               />
             </div>

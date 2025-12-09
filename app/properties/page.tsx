@@ -1,10 +1,10 @@
-import EmptyState from "../component/EmptyState";
-import ClientOnly from "../component/ClientOnly";
+import EmptyState from '../component/EmptyState';
+import ClientOnly from '../component/ClientOnly';
 
-import getCurrentUser from "../actions/getCurrentUser";
-import TripsClient from "./PropertiesClient";
-import getListings from "../actions/getLisings";
-import PropertiesClient from "./PropertiesClient";
+import getCurrentUser from '../actions/getCurrentUser';
+import TripsClient from './PropertiesClient';
+import getListings from '../actions/getLisings';
+import PropertiesClient from './PropertiesClient';
 
 const PropertiesPage = async () => {
   const currentUser = await getCurrentUser();

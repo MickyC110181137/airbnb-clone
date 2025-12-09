@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Container from "../component/Container";
-import Heading from "../component/Heading";
+import Container from '../component/Container';
+import Heading from '../component/Heading';
 
-import { safeListings, SafeUser } from "../types";
-import ListingCard from "../component/listings/ListingCard";
+import { safeListings, SafeUser } from '../types';
+import ListingCard from '../component/listings/ListingCard';
 
 interface FavoriteClientProps {
   listings: safeListings[];

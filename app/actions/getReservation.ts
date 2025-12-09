@@ -1,4 +1,4 @@
-import prisma from "../libs/prismadb";
+import prisma from '../libs/prismadb';
 
 interface IParams {
   listingId?: string;
@@ -33,7 +33,7 @@ export default async function getReservations(params: IParams) {
         listing: true,
       },
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
     });
 
@@ -53,6 +53,6 @@ export default async function getReservations(params: IParams) {
     if (error instanceof Error) {
       throw error;
     }
-    throw new Error("Unknown error");
+    throw new Error('Unknown error');
   }
 }

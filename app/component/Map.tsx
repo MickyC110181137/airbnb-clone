@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
-import L from "leaflet";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import React, { useEffect } from 'react';
+import L from 'leaflet';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 interface MapProps {
   center?: number[];
@@ -13,9 +13,9 @@ const Map: React.FC<MapProps> = ({ center }) => {
   useEffect(() => {
     // 設定自訂 Marker 圖片（改用 public 資料夾）
     const defaultIcon = L.icon({
-      iconUrl: "/leaflet/marker-icon.png",
-      iconRetinaUrl: "/leaflet/marker-icon-2x.png",
-      shadowUrl: "/leaflet/marker-shadow.png",
+      iconUrl: '/leaflet/marker-icon.png',
+      iconRetinaUrl: '/leaflet/marker-icon-2x.png',
+      shadowUrl: '/leaflet/marker-shadow.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
     });

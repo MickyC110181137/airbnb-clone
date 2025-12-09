@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React from "react";
-import Container from "../Container";
-import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
+import React from 'react';
+import Container from '../Container';
+import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
 import {
   GiBarn,
   GiBoatFishing,
@@ -12,98 +12,98 @@ import {
   GiForestCamp,
   GiIsland,
   GiWindmill,
-} from "react-icons/gi";
-import CategoryBox from "./CategoryBox";
-import { MdOutlineVilla } from "react-icons/md";
-import { usePathname, useSearchParams } from "next/navigation";
-import { FaSkiing } from "react-icons/fa";
-import { BsSnow } from "react-icons/bs";
-import { IoDiamond } from "react-icons/io5";
+} from 'react-icons/gi';
+import CategoryBox from './CategoryBox';
+import { MdOutlineVilla } from 'react-icons/md';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { FaSkiing } from 'react-icons/fa';
+import { BsSnow } from 'react-icons/bs';
+import { IoDiamond } from 'react-icons/io5';
 
 export const categories = [
   {
-    label: "Beach",
+    label: 'Beach',
     icon: TbBeach,
-    description: "This property is close to the beach",
+    description: 'This property is close to the beach',
   },
   {
-    label: "Windmills",
+    label: 'Windmills',
     icon: GiWindmill,
-    description: "this property has windmills!",
+    description: 'this property has windmills!',
   },
   {
-    label: "Modern",
+    label: 'Modern',
     icon: MdOutlineVilla,
-    description: "this property is modern!",
+    description: 'this property is modern!',
   },
   {
-    label: "Countryside",
+    label: 'Countryside',
     icon: TbMountain,
-    description: "this property is in the Countryside!",
+    description: 'this property is in the Countryside!',
   },
   {
-    label: "Pools",
+    label: 'Pools',
     icon: TbPool,
-    description: "this property has a Pools!",
+    description: 'this property has a Pools!',
   },
   {
-    label: "Islands",
+    label: 'Islands',
     icon: GiIsland,
-    description: "this property is on a island!",
+    description: 'this property is on a island!',
   },
   {
-    label: "Lake",
+    label: 'Lake',
     icon: GiBoatFishing,
-    description: "this property is close to a Lake!",
+    description: 'this property is close to a Lake!',
   },
   {
-    label: "Sking",
+    label: 'Sking',
     icon: FaSkiing,
-    description: "this property has skiing activities!",
+    description: 'this property has skiing activities!',
   },
   {
-    label: "Castles",
+    label: 'Castles',
     icon: GiCastle,
-    description: "this property is in a Castles!",
+    description: 'this property is in a Castles!',
   },
   {
-    label: "Camping",
+    label: 'Camping',
     icon: GiForestCamp,
-    description: "this property has camping activities!",
+    description: 'this property has camping activities!',
   },
   {
-    label: "Arctic",
+    label: 'Arctic',
     icon: BsSnow,
-    description: "this property has camping activities!",
+    description: 'this property has camping activities!',
   },
   {
-    label: "Cave",
+    label: 'Cave',
     icon: GiCaveEntrance,
-    description: "this property is in the cave!",
+    description: 'this property is in the cave!',
   },
   {
-    label: "Desert",
+    label: 'Desert',
     icon: GiCactus,
-    description: "this property is in the desert!",
+    description: 'this property is in the desert!',
   },
   {
-    label: "Barns",
+    label: 'Barns',
     icon: GiBarn,
-    description: "this property is in the barn!",
+    description: 'this property is in the barn!',
   },
   {
-    label: "Lux",
+    label: 'Lux',
     icon: IoDiamond,
-    description: "this property is luxurious!",
+    description: 'this property is luxurious!',
   },
 ];
 
 const Categories = () => {
   const params = useSearchParams();
-  const category = params?.get("category");
+  const category = params?.get('category');
   const pathname = usePathname();
 
-  const isMainPage = pathname == "/";
+  const isMainPage = pathname == '/';
 
   if (!isMainPage) {
     return null;

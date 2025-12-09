@@ -1,13 +1,13 @@
-"use client"; // 確保這是客戶端元件
+'use client'; // 確保這是客戶端元件
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Logo = () => {
   const router = useRouter();
   return (
     <Image
-      onClick={() => router.push("/")}
+      onClick={() => router.push('/')}
       alt="Logo"
       className="md:block cursor-pointer"
       height="100"

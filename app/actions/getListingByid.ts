@@ -1,4 +1,4 @@
-import prisma from "../libs/prismadb";
+import prisma from '../libs/prismadb';
 
 interface IParams {
   listingId?: string;
@@ -40,7 +40,7 @@ export default async function getListingById(params: IParams) {
     if (error instanceof Error) {
       throw error;
     }
-    throw new Error("Unknown error");
+    throw new Error('Unknown error');
   }
   //   catch (error: any) {
   //     throw new Error(error);

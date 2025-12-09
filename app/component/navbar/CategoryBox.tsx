@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import React, { useCallback } from "react";
-import { IconType } from "react-icons";
-import qs from "query-string";
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import React, { useCallback } from 'react';
+import { IconType } from 'react-icons';
+import qs from 'query-string';
 
 interface CategoryBoxProps {
   icon: IconType;
@@ -53,7 +53,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   //   }, [label, params, router]);
 
   const handleClick = useCallback(() => {
-    const currentCategory = params?.get("category");
+    const currentCategory = params?.get('category');
     const updatedQuery: QueryParams = {};
 
     if (currentCategory !== label) {
@@ -62,10 +62,10 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     const url = qs.stringifyUrl(
       {
-        url: "/",
+        url: '/',
         query: updatedQuery,
       },
-      { skipNull: true },
+      { skipNull: true }
     );
 
     router.push(url); // ✅ router.push 只接受字串
@@ -84,8 +84,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         hover:text-neutral-800
         transition
         cursor-pointer
-        ${selected ? "border-b-neutral-800" : "border-transparent"}
-        ${selected ? "text-neutral-800" : "text-neutral-500"}
+        ${selected ? 'border-b-neutral-800' : 'border-transparent'}
+        ${selected ? 'text-neutral-800' : 'text-neutral-500'}
         `}
     >
       <Icon size={26} />

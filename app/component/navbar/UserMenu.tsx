@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { AiOutlineMenu } from "react-icons/ai";
-import Avatar from "../Avatar";
-import { useCallback, useState } from "react";
-import { signOut } from "next-auth/react";
+import { useRouter } from 'next/navigation';
+import { AiOutlineMenu } from 'react-icons/ai';
+import Avatar from '../Avatar';
+import { useCallback, useState } from 'react';
+import { signOut } from 'next-auth/react';
 
-import MenuItem from "./MenuItem";
+import MenuItem from './MenuItem';
 
-import useRegisterModal from "../../hooks/useRegisterModal";
-import useLoginModal from "../../hooks/useLoginModal";
-import { User } from "../../generated/prisma/client";
-import { SafeUser } from "../../types";
-import useRentModal from "../../hooks/useRentModal";
+import useRegisterModal from '../../hooks/useRegisterModal';
+import useLoginModal from '../../hooks/useLoginModal';
+import { User } from '../../generated/prisma/client';
+import { SafeUser } from '../../types';
+import useRentModal from '../../hooks/useRentModal';
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -103,19 +103,19 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             {currentUser ? (
               <>
                 <MenuItem
-                  onClick={() => router.push("/trips")}
+                  onClick={() => router.push('/trips')}
                   label="My trips"
                 />
                 <MenuItem
-                  onClick={() => router.push("/favorites")}
+                  onClick={() => router.push('/favorites')}
                   label="My favorites"
                 />
                 <MenuItem
-                  onClick={() => router.push("/reservations")}
+                  onClick={() => router.push('/reservations')}
                   label="My reservations"
                 />
                 <MenuItem
-                  onClick={() => router.push("/properties")}
+                  onClick={() => router.push('/properties')}
                   label="My properties"
                 />
                 <MenuItem onClick={rentModal.onOpen} label="Airbnb my home" />

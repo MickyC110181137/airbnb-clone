@@ -1,7 +1,7 @@
-"use client";
-import { useCallback, useEffect, useState } from "react";
-import { IoMdClose } from "react-icons/io";
-import Button from "../Button";
+'use client';
+import { useCallback, useEffect, useState } from 'react';
+import { IoMdClose } from 'react-icons/io';
+import Button from '../Button';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -36,13 +36,13 @@ const Modal: React.FC<ModalProps> = ({
 
   const handleClose = useCallback(() => {
     if (disabled) {
-      console.log("關閉被禁用");
+      console.log('關閉被禁用');
       return;
     }
-    console.log("1️開始關閉動畫");
+    console.log('1️開始關閉動畫');
     setShowModal(false);
     setTimeout(() => {
-      console.log("close");
+      console.log('close');
       onClose();
     }, 300);
   }, [disabled, onClose]);
@@ -102,8 +102,8 @@ const Modal: React.FC<ModalProps> = ({
                             translate
                             duration-300
                             h-full
-                            ${showModal ? "translate-y-0" : "translate-y-full"}
-                            ${showModal ? "opacity-100" : "opacity-0"}
+                            ${showModal ? 'translate-y-0' : 'translate-y-full'}
+                            ${showModal ? 'opacity-100' : 'opacity-0'}
                         `}
           >
             <div

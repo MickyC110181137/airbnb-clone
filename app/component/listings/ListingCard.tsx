@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Listing, Reservation } from "../../generated/prisma";
-import { useRouter } from "next/navigation";
+import { Listing, Reservation } from '../../generated/prisma';
+import { useRouter } from 'next/navigation';
 
-import React, { useCallback, useMemo } from "react";
-import { safeListings, SafeReservations, SafeUser } from "../../types";
-import useCountries from "../../hooks/useCountries";
-import { format } from "date-fns";
-import Image from "next/image";
-import HeartButton from "../HeartButton";
-import Button from "../Button";
+import React, { useCallback, useMemo } from 'react';
+import { safeListings, SafeReservations, SafeUser } from '../../types';
+import useCountries from '../../hooks/useCountries';
+import { format } from 'date-fns';
+import Image from 'next/image';
+import HeartButton from '../HeartButton';
+import Button from '../Button';
 
 interface ListingCardProps {
   data: safeListings;
@@ -46,7 +46,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
       //   onAction?.(actionId);
       if (actionId) onAction?.(actionId);
     },
-    [onAction, actionId, disabled],
+    [onAction, actionId, disabled]
   );
 
   const price = useMemo(() => {
@@ -64,7 +64,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     const start = new Date(reservation.startDate);
     const end = new Date(reservation.endDate);
 
-    return `${format(start, "PP")} - ${format(end, "PP")}`;
+    return `${format(start, 'PP')} - ${format(end, 'PP')}`;
   }, [reservation]);
 
   return (

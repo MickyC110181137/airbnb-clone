@@ -1,6 +1,6 @@
-import prisma from "../libs/prismadb";
+import prisma from '../libs/prismadb';
 
-import getCurrentUser from "./getCurrentUser";
+import getCurrentUser from './getCurrentUser';
 
 export default async function getFavoriteListings() {
   try {
@@ -24,6 +24,6 @@ export default async function getFavoriteListings() {
     if (error instanceof Error) {
       throw error;
     }
-    throw new Error("Unknown error");
+    throw new Error('Unknown error');
   }
 }

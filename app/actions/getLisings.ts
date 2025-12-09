@@ -1,4 +1,4 @@
-import prisma from "../libs/prismadb";
+import prisma from '../libs/prismadb';
 
 export interface IListingsParams {
   userId?: string;
@@ -80,7 +80,7 @@ export default async function getListings(params: IListingsParams) {
     const listings = await prisma.listing.findMany({
       where: query,
       orderBy: {
-        createdAt: "desc",
+        createdAt: 'desc',
       },
     });
 
@@ -93,7 +93,7 @@ export default async function getListings(params: IListingsParams) {
     if (error instanceof Error) {
       throw error;
     }
-    throw new Error("Unknown error");
+    throw new Error('Unknown error');
   }
   // catch (error: any) {
   //     throw new Error(String(error));

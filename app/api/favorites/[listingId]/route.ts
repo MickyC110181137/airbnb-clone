@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-import getCurrentUser from "../../../actions/getCurrentUser";
-import prisma from "../../../libs/prismadb";
+import getCurrentUser from '../../../actions/getCurrentUser';
+import prisma from '../../../libs/prismadb';
 
 // interface IParams {
 //   listingId?: string;
@@ -9,7 +9,7 @@ import prisma from "../../../libs/prismadb";
 
 export async function POST(
   request: Request,
-  { params }: { params: Promise<{ listingId: string }> },
+  { params }: { params: Promise<{ listingId: string }> }
 ) {
   const currentUser = await getCurrentUser();
 
@@ -47,7 +47,7 @@ export async function POST(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Promise<{ listingId: string }> }, // 直接指定 string
+  { params }: { params: Promise<{ listingId: string }> } // 直接指定 string
 ) {
   const currentUser = await getCurrentUser();
 

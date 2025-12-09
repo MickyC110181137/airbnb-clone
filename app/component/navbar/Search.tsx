@@ -1,29 +1,29 @@
-"use client";
-import { BiSearch } from "react-icons/bi";
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
-import { differenceInDays } from "date-fns";
+'use client';
+import { BiSearch } from 'react-icons/bi';
+import { useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
+import { differenceInDays } from 'date-fns';
 
-import useSearchModal from "../../hooks/useSearchModal";
-import useCountries from "../../hooks/useCountries";
-import { start } from "repl";
+import useSearchModal from '../../hooks/useSearchModal';
+import useCountries from '../../hooks/useCountries';
+import { start } from 'repl';
 
 const Search = () => {
   const searhModal = useSearchModal();
   const params = useSearchParams();
   const { getByValue } = useCountries();
 
-  const locationValue = params?.get("locationValue");
-  const startDate = params?.get("startDate");
-  const endDate = params?.get("endDate");
-  const guestCount = params?.get("guestCount");
+  const locationValue = params?.get('locationValue');
+  const startDate = params?.get('startDate');
+  const endDate = params?.get('endDate');
+  const guestCount = params?.get('guestCount');
 
   const locationLabel = useMemo(() => {
     if (locationValue) {
       return getByValue(locationValue as string)?.label;
     }
 
-    return "Anywhere";
+    return 'Anywhere';
   }, [getByValue, locationValue]);
 
   const durationLabel = useMemo(() => {
@@ -38,14 +38,14 @@ const Search = () => {
       return `${diff} Days`;
     }
 
-    return "Any Week";
+    return 'Any Week';
   }, [startDate, endDate]);
 
   const guestLabel = useMemo(() => {
     if (guestCount) {
       return `${guestCount} Guests`;
     }
-    return "Add Guests";
+    return 'Add Guests';
   }, [guestCount]);
 
   return (
