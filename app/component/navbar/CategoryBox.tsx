@@ -12,6 +12,11 @@ interface CategoryBoxProps {
   selected?: boolean;
 }
 
+interface QueryParams {
+  category?: string;
+  [key: string]: string | undefined; // 允許擴展其他 query
+}
+
 const CategoryBox: React.FC<CategoryBoxProps> = ({
   icon: Icon,
   label,
@@ -49,7 +54,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
   const handleClick = useCallback(() => {
     const currentCategory = params?.get("category");
-    const updatedQuery: any = {};
+    const updatedQuery: QueryParams = {};
 
     if (currentCategory !== label) {
       updatedQuery.category = label;

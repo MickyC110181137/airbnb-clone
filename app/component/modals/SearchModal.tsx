@@ -15,6 +15,16 @@ import Heading from "../Heading";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
 
+interface SearchQuery {
+  locationValue?: string;
+  guestCount?: number;
+  roomCount?: number;
+  bathroomCount?: number;
+  startDate?: string;
+  endDate?: string;
+  [key: string]: string | number | undefined; // 保留其他可能存在的 query 參數
+}
+
 enum STEPS {
   LOCATION = 0,
   DATE = 1,
@@ -64,7 +74,7 @@ const SeachModal = () => {
       currentQuery = qs.parse(params.toString());
     }
 
-    const updateQuery: any = {
+    const updateQuery: SearchQuery = {
       ...currentQuery,
       locationValue: location?.value,
       guestCount,

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
+import { FieldValues, useForm, SubmitHandler, Path } from "react-hook-form";
 
 import useRentModal from "../../hooks/useRentModal";
 
@@ -70,13 +70,23 @@ const RentModal = () => {
     [location],
   );
 
-  const setCustomValue = (id: string, value: any) => {
+  const setCustomValue = <TField extends Path<FieldValues>>(
+    id: TField,
+    value: FieldValues[TField],
+  ) => {
     setValue(id, value, {
       shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
     });
   };
+  // const setCustomValue = (id: string, value: any) => {
+  //   setValue(id, value, {
+  //     shouldValidate: true,
+  //     shouldDirty: true,
+  //     shouldTouch: true,
+  //   });
+  // };
 
   const onBack = () => {
     setStep((value) => value - 1);

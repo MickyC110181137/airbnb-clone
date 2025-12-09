@@ -32,7 +32,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
         // ---- react-select 的 onChange 會回傳 unknown type，所以強制轉型 ----
         onChange={(value) => onChange(value as CountrySelectValue)}
         // ---- 自訂選項顯示方式，不只是字，也包含國旗 + 地區 ----
-        formatOptionLabel={(option: any) => (
+        formatOptionLabel={(option: CountrySelectValue) => (
           <div className="flex flex-row items-center gap-3">
             <div>{option.flag}</div>
             <div>
