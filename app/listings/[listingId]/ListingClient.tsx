@@ -1,28 +1,28 @@
-'use client';
-import toast from 'react-hot-toast';
+"use client";
+import toast from "react-hot-toast";
 import {
   differenceInCalendarDays,
   differenceInDays,
   eachDayOfInterval,
-} from 'date-fns';
-import { Range } from 'react-date-range';
-import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+} from "date-fns";
+import { Range } from "react-date-range";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { categories } from '../../component/navbar/Categories';
-import { safeListings, SafeReservations, SafeUser } from '../../types';
-import Container from '../../component/Container';
-import ListingHead from '../../component/listings/ListingHead';
-import ListingInfo from '../../component/listings/ListingInfo';
-import ListingReservation from '../../component/listings/ListingReservation';
+import { categories } from "../../component/navbar/Categories";
+import { safeListings, SafeReservations, SafeUser } from "../../types";
+import Container from "../../component/Container";
+import ListingHead from "../../component/listings/ListingHead";
+import ListingInfo from "../../component/listings/ListingInfo";
+import ListingReservation from "../../component/listings/ListingReservation";
 
-import useLoginModal from '../../hooks/useLoginModal';
-import axios from 'axios';
+import useLoginModal from "../../hooks/useLoginModal";
+import axios from "axios";
 
 const initialDateRange = {
   startDate: new Date(),
   endDate: new Date(),
-  key: 'selection',
+  key: "selection",
 };
 
 interface ListingClientProps {
@@ -67,20 +67,20 @@ const ListingClient: React.FC<ListingClientProps> = ({
     setIsLoading(true);
 
     axios
-      .post('/api/reservations', {
+      .post("/api/reservations", {
         totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,
         listingId: listing?.id,
       })
       .then(() => {
-        toast.success('Listing reserved!');
+        toast.success("Listing reserved!");
         setDateRange(initialDateRange);
         //Redirect to /trips
-        router.push('/trips');
+        router.push("/trips");
       })
       .catch(() => {
-        toast.error('Someghing went wrong');
+        toast.error("Someghing went wrong");
       })
       .finally(() => {
         setIsLoading(false);

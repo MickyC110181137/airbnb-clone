@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
-import prisma from '../../../libs/prismadb';
-import getCurrentUser from '../../../actions/getCurrentUser';
+import { NextResponse } from "next/server";
+import prisma from "../../../libs/prismadb";
+import getCurrentUser from "../../../actions/getCurrentUser";
 
 // interface Iparams {
 //   reservationId?: string;
@@ -21,8 +21,8 @@ export async function DELETE(
   // const resolvedParams = await params; // <- 必須 await
   // const reservationId = resolvedParams.reservationId;
 
-  if (!reservationId || typeof reservationId !== 'string') {
-    throw new Error('Invalid ID');
+  if (!reservationId || typeof reservationId !== "string") {
+    throw new Error("Invalid ID");
   }
 
   const reservation = await prisma.reservation.deleteMany({

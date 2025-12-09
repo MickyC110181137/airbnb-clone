@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
 
-import Container from '../component/Container';
-import Heading from '../component/Heading';
+import Container from "../component/Container";
+import Heading from "../component/Heading";
 
-import { SafeReservations, SafeUser } from '../types';
-import { error } from 'console';
-import ListingCard from '../component/listings/ListingCard';
+import { SafeReservations, SafeUser } from "../types";
+import { error } from "console";
+import ListingCard from "../component/listings/ListingCard";
 
 interface TripsClientProps {
   reservations: SafeReservations[];
@@ -21,7 +21,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
   currentUser,
 }) => {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState('');
+  const [deletingId, setDeletingId] = useState("");
 
   const onCancel = useCallback(
     (id: string) => {
@@ -30,14 +30,14 @@ const TripsClient: React.FC<TripsClientProps> = ({
       axios
         .delete(`/api/reservations/${id}`)
         .then(() => {
-          toast.success('Reservations cancelled');
+          toast.success("Reservations cancelled");
           router.refresh();
         })
         .catch((error) => {
           toast.error(error?.response?.data?.error);
         })
         .finally(() => {
-          setDeletingId('');
+          setDeletingId("");
         });
     },
     [router]

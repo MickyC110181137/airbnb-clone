@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Select from 'react-select';
-import useCountries from '../../hooks/useCountries';
+import React from "react";
+import Select from "react-select";
+import useCountries from "../../hooks/useCountries";
 
 // ---- 型別定義，用來描述被選到的國家值 ----
 export type CountrySelectValue = {
@@ -43,17 +43,17 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
         )}
         // ---- 替 react-select 的每個內部區塊加入 Tailwind class ----
         classNames={{
-          control: () => 'p-3 border', // input 外框樣式
-          input: () => 'text-lg', // 使用者輸入時的文字大小
-          option: () => 'text-lg', // 下拉選單的字型大小
+          control: () => "p-3 border", // input 外框樣式
+          input: () => "text-lg", // 使用者輸入時的文字大小
+          option: () => "text-lg", // 下拉選單的字型大小
         }}
         // ---- 修改 react-select 內建顏色設定 ----
         theme={(theme) => ({
           ...theme,
           colors: {
             ...theme.colors,
-            primary: 'black', // 選中時的邊框和文字顏色
-            primary25: '#ffe4e6', // hover 時背景顏色（粉嫩色）
+            primary: "black", // 選中時的邊框和文字顏色
+            primary25: "#ffe4e6", // hover 時背景顏色（粉嫩色）
           },
         })}
       />

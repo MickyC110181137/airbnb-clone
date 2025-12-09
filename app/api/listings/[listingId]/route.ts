@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
-import prisma from '../../../libs/prismadb';
-import getCurrentUser from '../../../actions/getCurrentUser';
+import { NextResponse } from "next/server";
+import prisma from "../../../libs/prismadb";
+import getCurrentUser from "../../../actions/getCurrentUser";
 
 // interface Iparams {
 //   listingId?: string;
@@ -21,8 +21,8 @@ export async function DELETE(
   // const resolvedParams = await params; // <- 必須 await
   // const listingId = resolvedParams.listingId;
 
-  if (!listingId || typeof listingId !== 'string') {
-    throw new Error('Invalid ID');
+  if (!listingId || typeof listingId !== "string") {
+    throw new Error("Invalid ID");
   }
 
   const listing = await prisma.listing.deleteMany({

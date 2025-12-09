@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
-import React from 'react';
-import Heading from './Heading';
-import Button from './Button';
+import { useRouter } from "next/navigation";
+import React from "react";
+import Heading from "./Heading";
+import Button from "./Button";
 
 interface EmptyState {
   title?: string;
@@ -12,8 +12,8 @@ interface EmptyState {
 }
 
 const EmptyState: React.FC<EmptyState> = ({
-  title = 'No exact matches',
-  subtitle = 'Try changing or removing some of your filters',
+  title = "No exact matches",
+  subtitle = "Try changing or removing some of your filters",
   showReset,
 }) => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const EmptyState: React.FC<EmptyState> = ({
           <Button
             outline
             label="Remove all filters"
-            onClick={() => router.push('/')}
+            onClick={() => router.push("/")}
           />
         )}
       </div>

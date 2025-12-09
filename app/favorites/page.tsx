@@ -1,9 +1,9 @@
-import EmptyState from '../component/EmptyState';
-import ClientOnly from '../component/ClientOnly';
+import EmptyState from "../component/EmptyState";
+import ClientOnly from "../component/ClientOnly";
 
-import getCurrentUser from '../actions/getCurrentUser';
-import getFavoriteListings from '../actions/getFavoriteListings';
-import FavoriteClient from './FavoriteClient';
+import getCurrentUser from "../actions/getCurrentUser";
+import getFavoriteListings from "../actions/getFavoriteListings";
+import FavoriteClient from "./FavoriteClient";
 
 const ReservationPage = async () => {
   const currentUser = await getCurrentUser();

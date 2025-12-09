@@ -1,14 +1,14 @@
-'use client';
-import dynamic from 'next/dynamic';
-import { IconType } from 'react-icons';
+"use client";
+import dynamic from "next/dynamic";
+import { IconType } from "react-icons";
 
-import { SafeUser } from '../../types';
-import useCountries from '../../hooks/useCountries';
+import { SafeUser } from "../../types";
+import useCountries from "../../hooks/useCountries";
 
-import Avatar from '../Avatar';
-import ListingCategory from './ListingCategory';
+import Avatar from "../Avatar";
+import ListingCategory from "./ListingCategory";
 
-const Map = dynamic(() => import('../Map'), {
+const Map = dynamic(() => import("../Map"), {
   ssr: false,
 });
 

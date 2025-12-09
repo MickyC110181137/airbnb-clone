@@ -1,11 +1,11 @@
-import React from 'react';
-import getListingById from '../../actions/getListingByid';
-import getCurrentUser from '../../actions/getCurrentUser';
+import React from "react";
+import getListingById from "../../actions/getListingByid";
+import getCurrentUser from "../../actions/getCurrentUser";
 
-import ClientOnly from '../../component/ClientOnly';
-import EmptyState from '../../component/EmptyState';
-import ListingClient from './ListingClient';
-import getReservations from '../../actions/getReservation';
+import ClientOnly from "../../component/ClientOnly";
+import EmptyState from "../../component/EmptyState";
+import ListingClient from "./ListingClient";
+import getReservations from "../../actions/getReservation";
 
 // 注意：params 是 Promise
 interface PageProps {
