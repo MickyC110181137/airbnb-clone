@@ -14,6 +14,15 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "prisma/generated/**",
+      "app/generated/**",
+      "**/*.d.ts",
+    ],
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     files: ["**/*.ts", "**/*.tsx"],
@@ -33,9 +42,7 @@ const eslintConfig = [
       ...prettierConfig.rules,
       "@typescript-eslint/no-unused-vars": "warn",
       "no-console": "warn",
-      semi: ["error", "always"],
-      quotes: ["error", "double"],
-      "prettier/prettier": ["error", { semi: true }],
+      "prettier/prettier": ["error", { semi: true, singleQuote: false }],
     },
   },
 ];
